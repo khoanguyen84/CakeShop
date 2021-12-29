@@ -10,3 +10,10 @@
 2. JavaScript
 3. git basic/ github
 4. DOM/BOM, Array methods
+
+## Hướng dẫn deploy website sử dụng github
+1. Tại reposiory của dự án -> chọn tab Settings
+2. Ở menu bên trái chọn menu Pages
+3. Tại Github pages -> trong phần Source -> thay none thành master/main
+4. Nhấn vào nút save
+5. Website được release tại địa chỉ  https://khoanguyen84.github.io/CakeShop/
