@@ -44,6 +44,15 @@
     padding: 5px 0px;
 }
 
+.input-sm{
+    width: 100px;
+    padding: 5px 0px;
+}
+.input-md{
+    width: 200px;
+    padding: 5px 0px;
+}
+
 .btn{
     border: none;
     outline: none;
@@ -128,4 +137,8 @@ table td{
     border-radius: 20px;
     width: 60px;
     height: 60px;
+}
+
+.d-none{
+    display: none;
 }
