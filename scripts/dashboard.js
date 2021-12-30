@@ -19,6 +19,8 @@ let cakes = [
 
 function showCake(){
     let tbCake = document.querySelector('#tbCake');
+    tbCake.innerHTML = "";
+    sortCakeById();
     cakes.forEach(function(cake, index){
         tbCake.innerHTML += `
                             <tr>
@@ -36,6 +38,58 @@ function showCake(){
                             </tr>
                             `;
     })
+}
+
+function findLastestId(){
+    // let tmp = [... cakes];
+    // tmp.sort(function(cake1, cake2){
+    //     return cake2.id - cake1.id;
+    // });
+    // return tmp[0].id;
+    return cakes[0].id;
+}
+
+function sortCakeById(direction = 'desc'){
+    cakes.sort(function(cake1, cake2){
+        return direction == 'desc' ? cake2.id - cake1.id : cake1.id - cake2.id;
+    });
+}
+
+function save(){
+    // 1. lấy dữ liệu từ các inputs
+    let cakeName = document.querySelector("#cakeName").value;
+    let photo = `https://i.pravatar.cc/70?img=${Math.floor(Math.random()*70 + 1)}`;//document.querySelector("#photo").value;
+    let quantity = Number(document.querySelector("#quantity").value);
+    let price = Number(document.querySelector("#price").value);
+    let id = findLastestId() + 1;
+    // 2. kiểm tra tinh hợp lệ của dữ liệu
+    if(!isValid(cakeName, photo, quantity, price)){
+        alert("Fields are required");
+        return;
+    }
+    // 3. tạo ra 1 đối tượng cake
+    let cake = new Cake(id, cakeName, photo, price, quantity);
+    // 4. lưu vào mảng cakes
+    cakes.push(cake);
+    // 5. hiển thị dữ liệu
+    showCake();
+    // 6. xóa form
+    clearForm();
+}
+
+function clearForm(){
+    document.querySelector("#cakeName").value = "";
+    document.querySelector("#photo").value = "";
+    document.querySelector("#quantity").value = "";
+    document.querySelector("#price").value = "";
+}
+
+function isValid(){
+    for(let i=0; i< arguments.length; i++){
+        if(arguments[i] == null || arguments[i]=="")
+            return false;
+    }
+    return true;
 }
 
 (function ready(){
